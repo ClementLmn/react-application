@@ -1,0 +1,79 @@
+/******* GÉNÉRAL *******/
+
+::-moz-selection{
+    background: $black;
+    color: $white;
+    text-shadow: none;
+}
+::selection{
+    background: $black;
+    color: $white;
+    text-shadow: none;
+}
+
+html{
+    font-size: 62.5%; /* sets the base font to 10px for easier math */
+    background-color: $blue;
+}
+
+body{
+    min-height: 100vh;
+    font: 1.6em / 1.2 sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+/******* CLASSES GENERALES  *******/
+
+.hidden{
+    display: none !important;
+}
+.visually-hidden{
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    border: 0;
+    clip: rect(0 0 0 0);
+    position: absolute;
+    margin: -1px;
+    overflow: hidden;
+}
+
+.clearfix{
+    @include clearfix;
+}
+
+.pos-relative{
+    position: relative;
+}
+
+.align-center{
+    text-align: center;
+}
+.align-left{
+    text-align: left;
+}
+.align-right{
+    text-align: right;
+}
+
+.inline-b{
+    display: inline-block;
+    vertical-align: middle;
+    transform: translateY(-0.1em);
+}
+
+.full-width{
+    width: 100%;
+}
+
+.icon{
+    width: 1.2em;
+    height: 1.2em;
+    fill: currentColor;
+}
+
+.no-transition{
+    transition: none!important;
+}

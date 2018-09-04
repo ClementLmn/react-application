@@ -1,0 +1,35 @@
+.actions{
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    display: flex;
+    align-items: center;
+    padding-bottom: 50px;
+    transform: translateX(-50%);
+    &-btn{
+        @include size(50px);
+        background-color: $white;
+        border-radius: 50%;
+        box-shadow: 0 0 40px rgba($black, 0.1);
+        &.big {
+            @include size(70px);
+            margin: 0 20px;
+        }
+        > .icon-valid{
+            width: 50px;
+            height: 21px;
+            color: #22d622;
+        }
+        > .icon-rotate{
+            width: 15px;
+            height: 21px;
+            color: $blue;
+            transform: rotate(90deg);
+        }
+        > .icon-clear{
+            width: 15px;
+            height: 21px;
+            color: red;
+        }
+    }
+}

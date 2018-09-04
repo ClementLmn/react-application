@@ -1,21 +1,28 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Background from './components/Background'
+import Ticket from './components/Ticket';
+import Actions from './components/Actions';
+import Svgs from './components/Svgs';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+    state = {
+        isTicketRotate: false
+    }
+    rotateTicket = () => {
+        this.setState({
+            isTicketRotate: !this.state.isTicketRotate
+        })
+    }
+    render() {
+        return (
+            <div className="App">
+                <Background />
+                <Ticket rotated={this.state.isTicketRotate}/>
+                <Actions rotateTicket={this.rotateTicket}/>
+                <Svgs />
+            </div>
+        );
+    }
 }
 
 export default App;
