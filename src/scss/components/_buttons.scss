@@ -1,11 +1,61 @@
 .actions{
-    position: fixed;
-    bottom: 0;
-    left: 50%;
-    display: flex;
-    align-items: center;
-    padding-bottom: 50px;
-    transform: translateX(-50%);
+    &-bottom{
+        position: fixed;
+        bottom: 0;
+        left: 50%;
+        display: flex;
+        align-items: center;
+        padding-bottom: 50px;
+        transform: translateX(-50%);
+    }
+    &-right{
+        position: fixed;
+        top: 0;
+        right: 0;
+    }
+    &-slider{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        >input[type=range]{
+            margin-top: 70px;
+            -webkit-appearance: none;
+            width: 100%;
+            transform:rotate(270deg);
+            background: transparent;
+            &:focus{
+                outline: none;
+            }
+            &::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                margin-right: -5px;
+                background-color: $blue;
+                border: 3px solid $white;
+                @include size(15px);
+                border-radius: 50%;
+                box-shadow: 0 0 10px rgba($black, 0.1);
+                transform: translateY(-4px);
+                cursor: pointer;
+            }
+            &::-webkit-slider-runnable-track {
+                width: 100%;
+                height: 7px;
+                cursor: pointer;
+                background: $white;
+                border-radius: 10px;
+            }
+        } 
+        .sample{
+            border-radius: 50%;
+            border: 1px solid rgba($white, 0.7);
+            &-wrapper{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                @include size(50px);
+            }
+        }
+    }
     &-btn{
         @include size(50px);
         background-color: $white;
@@ -24,7 +74,6 @@
             width: 15px;
             height: 21px;
             color: $blue;
-            transform: rotate(90deg);
         }
         > .icon-clear{
             width: 15px;

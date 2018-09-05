@@ -2,7 +2,12 @@ import React, { Component } from 'react';
 import Icon from './Icon';
 
 class ActionButton extends Component {
-    componentDidMount(){
+    state = { 
+        icon: true
+    };
+
+    
+    componentDidMount = () => {
         this.setState((prevState, props) => {
             return {
                 icon: true
@@ -10,9 +15,6 @@ class ActionButton extends Component {
         });
     }
 
-    state = { 
-        icon: true
-    };
 
     render() {
         const classes = this.props.big ? 'actions-btn big' : 'actions-btn';
