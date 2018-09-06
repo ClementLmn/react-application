@@ -3,6 +3,7 @@ import Background from './components/Background'
 import Ticket from './components/Ticket';
 import Actions from './components/Actions';
 import Svgs from './components/Svgs';
+import {TimelineLite} from 'gsap';
 
 class App extends Component {
     state = {
@@ -10,7 +11,10 @@ class App extends Component {
         isTicketClear: false,
         brushWeight: 30,
         color: 'hsl(0, 0%, 25%)',
-        colorL: 25
+        colorL: 25,
+        showBackground: false,
+        showTicket: false,
+        showButtons: false,
     }
     undoTicket = () => {
         this.setState({
@@ -23,8 +27,6 @@ class App extends Component {
         })
     }
     onColorChange = c => {
-        console.log(c);
-        
         this.setState({
             color: `hsl(0, 0%, ${c}%)`,
             colorL: c,
@@ -35,12 +37,31 @@ class App extends Component {
             isTicketClear: !this.state.isTicketClear
         })
     }
+    componentDidMount = () => {
+        const tl = new TimelineLite();
+
+        tl.call(function(){
+            this.setState({
+                showTicket: true
+            });
+        }, [], this, 0.5)
+        .call(function(){
+            this.setState({
+                showBackground: true
+            });
+        }, [], this, 1)
+        .call(function(){
+            this.setState({
+                showButtons: true
+            });
+        }, [], this, 1.8)
+    }
     render() {
         return (
             <div className="App">
-                <Background />
-                <Ticket color={this.state.color} weight={this.state.brushWeight} whenUndo={this.undoTicket} toUndo={this.state.isTicketUndo} whenClear={this.clearTicket} toClear={this.state.isTicketClear}/>
-                <Actions color={this.state.colorL} onColorChange={this.onColorChange} weight={this.state.brushWeight} onWeightChange={this.onWeightChange} undoTicket={this.undoTicket} clearTicket={this.clearTicket}/> 
+                <Background show={this.state.showBackground}/>
+                <Ticket show={this.state.showTicket} color={this.state.color} weight={this.state.brushWeight} whenUndo={this.undoTicket} toUndo={this.state.isTicketUndo} whenClear={this.clearTicket} toClear={this.state.isTicketClear}/>
+                <Actions show={this.state.showButtons} color={this.state.colorL} onColorChange={this.onColorChange} weight={this.state.brushWeight} onWeightChange={this.onWeightChange} undoTicket={this.undoTicket} clearTicket={this.clearTicket}/> 
                 <Svgs />
             </div>
         );

@@ -71,9 +71,10 @@ class Ticket extends Component {
 
     render() {
         const classes = this.props.rotated ? 'ticket-wrapper rotated' : 'ticket-wrapper'
+        const innerClass = this.props.show ? 'ticket' : 'ticket hide';
         return (
             <div ref={el => this.dom = el} className={classes} onMouseMove={this.mouseMoveHandler} onMouseOver={this.mouseOverHandler} onMouseOut={this.mouseOutHandler}>
-                <div className="ticket">
+                <div className={innerClass}>
                     <div className='ticket-inner'>
                         <Renderer color={this.props.color} size={this.props.weight} toUndo={this.props.toUndo} whenUndo={this.props.whenUndo} toClear={this.props.toClear} whenClear={this.props.whenClear} w={this.state.width} h={this.state.height} />
                         <Brush size={this.props.weight} color={this.props.color} x={this.state.mouseX} y={this.state.mouseY} active={this.state.isMouseOver}/>

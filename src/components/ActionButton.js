@@ -17,7 +17,7 @@ class ActionButton extends Component {
 
 
     render() {
-        const classes = this.props.big ? 'actions-btn big' : 'actions-btn';
+        const classes = this.props.big ? 'actions-btn big' : `actions-btn ${this.props.pos}`;
         return (
             <button onClick={this.props.onClick} title={this.props.text} className={classes} >
                 {this.state.icon &&

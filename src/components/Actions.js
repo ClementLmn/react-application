@@ -10,12 +10,13 @@ class Actions extends Component {
         this.props.clearTicket();
     }
     render() {
+        const classes = this.props.show ? 'actions' : 'actions hide';
         return (
-            <div className='actions'>
+            <div className={classes}>
                 <div className='actions-bottom'>
-                    <ActionButton onClick={this.undoTicket} text='Undo' icon='rotate' />
+                    <ActionButton pos='left' onClick={this.undoTicket} text='Undo' icon='rotate' />
                     <ActionButton text='Send' icon='valid' big/>
-                    <ActionButton onClick={this.clearTicket} text='Clear' icon='clear'/>
+                    <ActionButton pos='right' onClick={this.clearTicket} text='Clear' icon='clear'/>
                 </div>
                 <div className='actions-right'>
                     <ActionSlider type='weight' min={3} max={50} value={this.props.weight} onSliderChange={this.props.onWeightChange}/>
