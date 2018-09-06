@@ -10,7 +10,6 @@ class Brush extends Component {
             borderColor: this.props.color,
             transform: `translate3d(${this.props.x - this.props.size/2}px, ${this.props.y - this.props.size/2}px, 0)` 
         }
-        console.log(this.props.color);
         
         return (
             <div className={classes} style={styles}></div>

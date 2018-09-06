@@ -26,6 +26,7 @@ class Ticket extends Component {
 
     componentDidUpdate = () => {
 
+        
     }
 
     computeSize = () => {

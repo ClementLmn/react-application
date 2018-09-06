@@ -3,15 +3,15 @@ import Background from './components/Background'
 import Ticket from './components/Ticket';
 import Actions from './components/Actions';
 import Svgs from './components/Svgs';
-import {TimelineLite} from 'gsap';
+import {TimelineLite, TweenLite} from 'gsap';
 
 class App extends Component {
     state = {
         isTicketUndo: false,
         isTicketClear: false,
-        brushWeight: 30,
+        brushWeight: 50,
         color: 'hsl(0, 0%, 25%)',
-        colorL: 25,
+        colorL: 0,
         showBackground: false,
         showTicket: false,
         showButtons: false,
@@ -55,6 +55,16 @@ class App extends Component {
                 showButtons: true
             });
         }, [], this, 1.8)
+        .call(function(){
+            const obj = {
+                brushWeight: this.state.brushWeight
+            }
+            TweenLite.to(obj, 1, {brushWeight: 30, onUpdate:function(el){
+                this.setState({
+                    brushWeight: el.target.brushWeight
+                })
+            }, onUpdateParams:["{self}"], onUpdateScope: this});
+        }, [], this, 2.8)
     }
     render() {
         return (
