@@ -18,7 +18,8 @@ class Actions extends Component {
                     <ActionButton onClick={this.clearTicket} text='Clear' icon='clear'/>
                 </div>
                 <div className='actions-right'>
-                    <ActionSlider weight={this.props.weight} onSliderChange={this.props.onSliderChange}/>
+                    <ActionSlider type='weight' min={3} max={50} value={this.props.weight} onSliderChange={this.props.onWeightChange}/>
+                    <ActionSlider type='color' min={0} max={100} value={this.props.color} onSliderChange={this.props.onColorChange}/>
                 </div>
             </div>
         );

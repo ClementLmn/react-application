@@ -52,7 +52,7 @@ class Renderer extends Component {
                          width={this.props.w - 40}
                          height={this.props.h - 40}
                          tool={Tools.Pencil} 
-                         lineColor='black'
+                         lineColor={this.props.color}
                          onChange={this.onSketchChange}
                          lineWidth={this.props.size}
                          forceValue={true}

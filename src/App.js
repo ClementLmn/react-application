@@ -8,7 +8,9 @@ class App extends Component {
     state = {
         isTicketUndo: false,
         isTicketClear: false,
-        brushWeight: 10
+        brushWeight: 30,
+        color: 'hsl(0, 0%, 25%)',
+        colorL: 25
     }
     undoTicket = () => {
         this.setState({
@@ -20,6 +22,14 @@ class App extends Component {
             brushWeight: w
         })
     }
+    onColorChange = c => {
+        console.log(c);
+        
+        this.setState({
+            color: `hsl(0, 0%, ${c}%)`,
+            colorL: c,
+        })
+    }
     clearTicket = () => {
         this.setState({
             isTicketClear: !this.state.isTicketClear
@@ -29,8 +39,8 @@ class App extends Component {
         return (
             <div className="App">
                 <Background />
-                <Ticket weight={this.state.brushWeight} whenUndo={this.undoTicket} toUndo={this.state.isTicketUndo} whenClear={this.clearTicket} toClear={this.state.isTicketClear}/>
-                <Actions weight={this.state.brushWeight} onSliderChange={this.onWeightChange} undoTicket={this.undoTicket} clearTicket={this.clearTicket}/> 
+                <Ticket color={this.state.color} weight={this.state.brushWeight} whenUndo={this.undoTicket} toUndo={this.state.isTicketUndo} whenClear={this.clearTicket} toClear={this.state.isTicketClear}/>
+                <Actions color={this.state.colorL} onColorChange={this.onColorChange} weight={this.state.brushWeight} onWeightChange={this.onWeightChange} undoTicket={this.undoTicket} clearTicket={this.clearTicket}/> 
                 <Svgs />
             </div>
         );

@@ -3,11 +3,11 @@ import Icon from './Icon';
 
 class ActionSlider extends Component {
     state = {
-        value: 10
+        value: 0
     }
     componentDidMount(){
         this.setState({
-            value: this.props.weight
+            value: this.props.value
         })
     }
     handleChange = (event) => {
@@ -15,13 +15,16 @@ class ActionSlider extends Component {
         this.props.onSliderChange(event.target.value)
     }
     render() {
-        const sampleStyle = {width: `${this.state.value}px`, height: `${this.state.value}px`}
+        const sampleStyle = this.props.type === 'weight' ?
+            {width: `${this.state.value}px`, height: `${this.state.value}px`} :
+            {backgroundColor: `hsl(0, 0%, ${this.state.value}%)`}
+        const classes = `sample ${this.props.type}`;
         return (
             <div className='actions-slider'>
                 <span className='sample-wrapper'>
-                    <span className='sample' style={sampleStyle}></span>
+                    <span className={classes} style={sampleStyle}></span>
                 </span>
-                <input type="range" name="volume" min="3" max="30" value={this.state.value} onChange={this.handleChange}/>
+                <input type="range" name="volume" min={this.props.min} max={this.props.max} value={this.state.value} onChange={this.handleChange}/>
             </div>
         );
     }
