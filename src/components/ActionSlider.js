@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Icon from './Icon';
 
 class ActionSlider extends Component {
     state = {
