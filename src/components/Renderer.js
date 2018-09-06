@@ -35,8 +35,6 @@ class Renderer extends Component {
     }
 
     componentDidUpdate(){
-        console.log(this.sketch);
-        
         if(this.props.toClear) {
             this.clearSketch();
             this.props.whenClear();
