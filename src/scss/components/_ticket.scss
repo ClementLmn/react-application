@@ -10,6 +10,9 @@
     transition: box-shadow 0.7s cubic-bezier(0.165, 0.84, 0.44, 1);
     &.hide{
         box-shadow: 0 0 0px rgba($black, 0.16);
+        canvas, .canvas-container{
+            pointer-events: none;
+        }
         .renderer{
             transform: scaleX(1.08) scaleY(1.05);
         }
@@ -21,7 +24,8 @@
         background-color: #f1faff;
         pointer-events: none;
     }
-    canvas {
+    canvas, .canvas-container {
+        transition: pointer-events 0s linear 3s;
         pointer-events: all;
     }
     .renderer{

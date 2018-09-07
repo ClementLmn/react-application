@@ -11,7 +11,7 @@ class App extends Component {
         isTicketClear: false,
         brushWeight: 50,
         color: 'hsl(0, 0%, 25%)',
-        colorL: 0,
+        colorL: 80,
         showBackground: false,
         showTicket: false,
         showButtons: false,
@@ -57,13 +57,20 @@ class App extends Component {
         }, [], this, 1.8)
         .call(function(){
             const obj = {
-                brushWeight: this.state.brushWeight
+                brushWeight: this.state.brushWeight,
+                colorL: this.state.colorL
             }
-            TweenLite.to(obj, 1, {brushWeight: 30, onUpdate:function(el){
+            TweenLite.to(obj, 0.8, {brushWeight: 20, onUpdate:function(el){
                 this.setState({
                     brushWeight: el.target.brushWeight
                 })
             }, onUpdateParams:["{self}"], onUpdateScope: this});
+            TweenLite.to(obj, 0.8, {colorL: 10, onUpdate:function(el){
+                this.setState({
+                    colorL: el.target.colorL,
+                    color: `hsl(0, 0%, ${el.target.colorL}%)`,
+                })
+            }, onUpdateParams:["{self}"], onUpdateScope: this, delay: 0.2});
         }, [], this, 2.8)
     }
     render() {
