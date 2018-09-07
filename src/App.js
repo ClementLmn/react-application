@@ -15,10 +15,23 @@ class App extends Component {
         showBackground: false,
         showTicket: false,
         showButtons: false,
+        imageUrl: '',
+        toAddImg: false
     }
     undoTicket = () => {
         this.setState({
             isTicketUndo: !this.state.isTicketUndo
+        })
+    }
+    whenAddImg = () => {
+        this.setState({
+            toAddImg: false
+        })
+    }
+    getDataFromUrl = (data) => {
+        this.setState({
+            imageUrl: data,
+            toAddImg: true
         })
     }
     onWeightChange = w => {
@@ -39,7 +52,6 @@ class App extends Component {
     }
     componentDidMount = () => {
         const tl = new TimelineLite();
-
         tl.call(function(){
             this.setState({
                 showTicket: true
@@ -71,14 +83,14 @@ class App extends Component {
                     color: `hsl(0, 0%, ${el.target.colorL}%)`,
                 })
             }, onUpdateParams:["{self}"], onUpdateScope: this, delay: 0.2});
-        }, [], this, 2.8)
+        }, [], this, 2.4)
     }
     render() {
         return (
             <div className="App">
                 <Background show={this.state.showBackground}/>
-                <Ticket show={this.state.showTicket} color={this.state.color} weight={this.state.brushWeight} whenUndo={this.undoTicket} toUndo={this.state.isTicketUndo} whenClear={this.clearTicket} toClear={this.state.isTicketClear}/>
-                <Actions show={this.state.showButtons} color={this.state.colorL} onColorChange={this.onColorChange} weight={this.state.brushWeight} onWeightChange={this.onWeightChange} undoTicket={this.undoTicket} clearTicket={this.clearTicket}/> 
+                <Ticket imageUrl={this.state.imageUrl} toAddImg={this.state.toAddImg} whenAddImg={this.whenAddImg}  show={this.state.showTicket} color={this.state.color} weight={this.state.brushWeight} whenUndo={this.undoTicket} toUndo={this.state.isTicketUndo} whenClear={this.clearTicket} toClear={this.state.isTicketClear}/>
+                <Actions getDataFromUrl={this.getDataFromUrl} show={this.state.showButtons} color={this.state.colorL} onColorChange={this.onColorChange} weight={this.state.brushWeight} onWeightChange={this.onWeightChange} undoTicket={this.undoTicket} clearTicket={this.clearTicket}/> 
                 <Svgs />
             </div>
         );

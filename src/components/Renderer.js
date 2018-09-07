@@ -9,6 +9,8 @@ class Renderer extends Component {
     componentDidMount = () => {
         window.fabric.objectCaching = false;
         this.sketch._canvas.imageSmoothingEnabled = false
+        this.ctx = this.sketch._canvas.getContext('2d');
+        this.ctx.globalCompositeOperation = 'luminosity'
     }
     onSketchChange = () => {
         let prev = this.state.canUndo;
@@ -43,6 +45,18 @@ class Renderer extends Component {
         if(this.props.toUndo) {
             this.undoSketch();
             this.props.whenUndo();
+        }
+
+        if(this.props.toAddImg) {
+            this.addImg();
+            this.props.whenAddImg();
+        }
+
+    }
+
+    addImg = () => {
+        if(this.props.imageUrl !== '') {
+            this.sketch.addImg(this.props.imageUrl);
         }
     }
     

@@ -11,6 +11,14 @@
     }
 }
 
+// Input placeholder
+@mixin input-placeholder {
+    &:-moz-placeholder { @content; }
+    &::-moz-placeholder { @content; }
+    &:-ms-input-placeholder { @content; }
+    &::-webkit-input-placeholder { @content; } 
+}
+
 /// Helper to cut text with an ellipse
 @mixin ellipsis{
     white-space: nowrap;

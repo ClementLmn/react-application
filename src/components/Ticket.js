@@ -15,12 +15,11 @@ class Ticket extends Component {
     }
 
     componentDidMount = () => {
-
         if(this.dom){
             this.computeSize();
             window.addEventListener('resize', () => {            
                 this.computeSize();
-            },false)
+            }, false)
         }
     }
 
@@ -33,12 +32,10 @@ class Ticket extends Component {
         const bcr = this.dom.getBoundingClientRect();
         const w = bcr.width;
         const h = bcr.height;
-
         this.setState({
             width: w,
             height: h
         })
-        
     }
 
     setComponentDom = el => {
@@ -77,7 +74,7 @@ class Ticket extends Component {
             <div ref={el => this.dom = el} className={classes} onMouseMove={this.mouseMoveHandler} onMouseOver={this.mouseOverHandler} onMouseOut={this.mouseOutHandler}>
                 <div className={innerClass}>
                     <div className='ticket-inner'>
-                        <Renderer color={this.props.color} size={this.props.weight} toUndo={this.props.toUndo} whenUndo={this.props.whenUndo} toClear={this.props.toClear} whenClear={this.props.whenClear} w={this.state.width} h={this.state.height} />
+                        <Renderer imageUrl={this.props.imageUrl} toAddImg={this.props.toAddImg} whenAddImg={this.props.whenAddImg} color={this.props.color} size={this.props.weight} toUndo={this.props.toUndo} whenUndo={this.props.whenUndo} toClear={this.props.toClear} whenClear={this.props.whenClear} w={this.state.width} h={this.state.height} />
                         <Brush size={this.props.weight} color={this.props.color} x={this.state.mouseX} y={this.state.mouseY} active={this.state.isMouseOver}/>
                     </div>
                 </div>
