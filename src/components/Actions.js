@@ -14,21 +14,21 @@ class Actions extends Component {
     }
     sendTicket = () => {
 
-        fetch('http://localhost:3333/send', {
-            method: 'POST',
-            body: JSON.stringify({
-                msg: 'allo'
-            }),
-            mode: 'no-cors',
-            headers: {"Content-Type": "application/json"}
-          })
-          .then(function(response){
-              console.log(response);
+        // fetch('http://localhost:3333/send', {
+        //     method: 'POST',
+        //     body: JSON.stringify({
+        //         msg: 'allo'
+        //     }),
+        //     mode: 'no-cors',
+        //     headers: {"Content-Type": "application/json"}
+        //   })
+        //   .then(function(response){
+        //       console.log(response);
               
-            return response.json();
-          }).then(function(body){
-            console.log(body);
-          });
+        //     return response.json();
+        //   }).then(function(body){
+        //     console.log(body);
+        //   });
     }
     render() {
         const classes = this.props.show ? 'actions' : 'actions hide';
